@@ -8,7 +8,7 @@
         {"m_version":"1","s_version":["7.0","6.0"]}
     ],
     "appdesc": "Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
-    "appstatus": 1,
+    "appstatus": 0,
     "icon": "",
     "sort": 162,
     "home": "",
