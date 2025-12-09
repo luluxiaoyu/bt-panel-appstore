@@ -64,6 +64,10 @@ def zip_directory(source_directory: Path, zip_file_path: Path, archive_root: Pat
     zip_file_path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zip_archive:
         for current_root, _, file_names in os.walk(source_directory):
+            rel_dir = Path(current_root).relative_to(archive_root)
+            if str(rel_dir) != '.':
+                zip_archive.writestr(str(rel_dir) + '/', '')
+                
             for file_name in file_names:
                 file_path = Path(current_root) / file_name
                 archive_name = file_path.relative_to(archive_root)
@@ -136,7 +140,6 @@ def process_app_versions(app_folder: Path, template_target_directory: Path, debu
     for subdir in sorted(app_folder.iterdir(), key=lambda path: path.name.lower()):
         if not subdir.is_dir():
             continue
-
         version_name = subdir.name
         if version_name == app_name:
             zip_filename = f"{app_name}.zip"
