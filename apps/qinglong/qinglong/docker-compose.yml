@@ -1,15 +1,24 @@
-version: '2'
 services:
-  web:
-    # alpine 基础镜像版本
-    image: whyour/qinglong:latest
-    # debian-slim 基础镜像版本
-    # image: whyour/qinglong:debian
-    volumes:
-      - ${QINGLONG_DATA:-/www/dk_project/dk_app/dk_qinglong/data}:/ql/data
-    ports:
-      - ${QINGLONG_PORT:-5700}:5700
+  BT_SERVICE_NAME6:
+    image: whyour/qinglong:${VERSION}.0
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPUS}
+          memory: ${MEMORY_LIMIT}
+    restart: always
     environment:
       # 部署路径非必须，以斜杠开头和结尾，比如 /test/
       QlBaseUrl: '/'
-    restart: unless-stopped
+    ports:
+      - ${HOST_IP}:${QINGLONG_PORT}:5700
+    volumes:
+      - ${APP_PATH}/data:/ql/data
+    labels:
+      createdBy: "bt_apps"
+    networks:
+      - baota_net
+
+networks:
+  baota_net:
+    external: true
