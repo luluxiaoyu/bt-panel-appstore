@@ -1,60 +1,62 @@
 services:
-  BT_SERVICE_NAME6:
-    image: bitnami/discourse:${VERSION}
-#    container_name: ${CONTAINER_NAME}
-    restart: always
-    networks:
-      - baota_net
-    ports:
-      - ${HOST_IP}:${WEB_HTTP_PORT}:3000
-    volumes:
-      - ${APP_PATH}/discourse:/bitnami/discourse
+  ds-postgres:
+    image: pgvector/pgvector:pg13
+    # restart: unless-stopped
     environment:
-      DISCOURSE_HOST: ${DOMAIN_HOST}
-      DISCOURSE_USERNAME: ${DISCOURSE_USERNAME}
-      DISCOURSE_PASSWORD: ${DISCOURSE_PASSWORD}
-      DISCOURSE_EMAIL: ${DISCOURSE_EMAIL}
-      DISCOURSE_DATABASE_HOST: ${DATABASE_HOST}
-      DISCOURSE_DATABASE_PORT_NUMBER: ${DISCOURSE_DATABASE_PORT_NUMBER}
-      DISCOURSE_DATABASE_NAME: ${PGSQL_DATABASE}
-      DISCOURSE_DATABASE_USER: ${PGSQL_USER}
-      DISCOURSE_DATABASE_PASSWORD: ${PGSQL_PASSWORD}
-      POSTGRESQL_CLIENT_CREATE_DATABASE_NAME: ${PGSQL_DATABASE}
-      POSTGRESQL_CLIENT_POSTGRES_USER: ${PGSQL_USER}
-      POSTGRESQL_CLIENT_POSTGRES_PASSWORD: ${PGSQL_PASSWORD}
-      POSTGRESQL_CLIENT_CREATE_DATABASE_EXTENSIONS: hstore,pg_trgm
-      DISCOURSE_REDIS_HOST: ${CACHE_DB_HOST}
-      DISCOURSE_REDIS_PASSWORD: ${REDIS_PASSWORD}
-      DISCOURSE_SMTP_HOST: test
-      DISCOURSE_SMTP_PORT_NUMBER: 0
-      DISCOURSE_SMTP_USER: test
-      DISCOURSE_SMTP_PASSWORD: test
-      DISCOURSE_SMTP_PROTOCOL:
+      POSTGRES_USER: discourse
+      POSTGRES_PASSWORD: db_password
+      POSTGRES_DB: discourse
+    volumes:
+      - ${APP_PATH}/data/pgdata:/var/lib/postgresql/data
     labels:
       createdBy: "bt_apps"
+    networks:
+      - baota_net
 
-  sidekiq:
-    image: bitnami/discourse:${VERSION}
-#    container_name: ${CONTAINER_NAME}-sidekiq
-    restart: always
-    networks:
-      - baota_net
-    depends_on:
-      - BT_SERVICE_NAME6
+  ds-redis:
+    image: redis:7
+    # restart: unless-stopped
+    command: [ "redis-server", "--appendonly", "yes" ]
     volumes:
-      - ${APP_PATH}/sidekiq:/bitnami/discourse
-    command: /opt/bitnami/scripts/discourse-sidekiq/run.sh
-    environment:
-      DISCOURSE_HOST: ${DOMAIN_HOST}
-      DISCOURSE_DATABASE_HOST: ${DATABASE_HOST}
-      DISCOURSE_DATABASE_PORT_NUMBER: ${DISCOURSE_DATABASE_PORT_NUMBER}
-      DISCOURSE_DATABASE_NAME: ${PGSQL_DATABASE}
-      DISCOURSE_DATABASE_USER: ${PGSQL_USER}
-      DISCOURSE_DATABASE_PASSWORD: ${PGSQL_PASSWORD}
-      DISCOURSE_REDIS_HOST: ${CACHE_DB_HOST}
-      DISCOURSE_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      - ${APP_PATH}/data/redisdata:/data
     labels:
       createdBy: "bt_apps"
+    networks:
+      - baota_net
+
+  discourse:
+    image: discourse/discourse:${VERSION}
+    depends_on:
+      - ds-postgres
+      - ds-redis
+    ports:
+      - ${HOST_IP}:${DISCOURSE_WEB_PORT}:80
+    # restart: unless-stopped
+    environment:
+      DISCOURSE_HOSTNAME: ${DISCOURSE_HOST} # use a real domain in practice
+      DISCOURSE_DB_HOST: ds-postgres
+      DISCOURSE_DB_NAME: discourse
+      DISCOURSE_DB_USERNAME: discourse
+      DISCOURSE_DB_PASSWORD: db_password
+      DISCOURSE_REDIS_HOST: ds-redis
+      DISCOURSE_SMTP_ADDRESS: ${DISCOURSE_SMTP_ADDRESS}
+      DISCOURSE_SMTP_PORT: ${DISCOURSE_SMTP_PORT}
+      DISCOURSE_SMTP_USER_NAME: ${DISCOURSE_SMTP_USER_NAME}
+      DISCOURSE_SMTP_PASSWORD: ${DISCOURSE_SMTP_PASSWORD}
+      DISCOURSE_SMTP_ENABLE_START_TLS: true
+      DISCOURSE_SMTP_OPENSSL_VERIFY_MODE: none
+      # Optional: initial admin
+      DISCOURSE_DEVELOPER_EMAILS: ${DISCOURSE_DEVELOPER_EMAILS}
+      DISCOURSE_NOTIFICATION_EMAIL: ${DISCOURSE_SMTP_USER_NAME}
+    volumes:
+      - ${APP_PATH}/data/uploads:/var/www/discourse/public/uploads
+      - ${APP_PATH}/data/backups:/var/www/discourse/public/backups
+      - ${APP_PATH}/data/nginx-o-bs-30-ratelimited.conf:/etc/nginx/conf.d/outlets/before-server/30-ratelimited.conf:ro
+      - ${APP_PATH}/data/nginx-o-d-30-ratelimited.conf:/etc/nginx/conf.d/outlets/discourse/30-ratelimited.conf:ro
+    labels:
+      createdBy: "bt_apps"
+    networks:
+      - baota_net
 
 networks:
   baota_net:
