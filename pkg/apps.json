@@ -136,44 +136,6 @@
   "volumes": {"data": {"type": "path", "desc": "data目录"}, "logs": {"type": "path", "desc": "logs目录"}}
 },
 {
-  "appid": 214,
-  "appname": "aingdesk",
-  "apptitle": "AingDesk",
-  "apptype": "AI",
-  "appTypeCN": "AI/大模型",
-  "appversion": [
-    {"m_version":"latest","s_version":[]}
-  ],
-  "appdesc": "AingDesk是一款开源免费，简单好用的AI助手，支持知识库、模型API、分享、联网搜索、智能体。",
-  "appstatus": 1,
-  "icon": "",
-  "sort": 215,
-  "home": "https://www.aingdesk.com/zh/",
-  "help": "https://docs.aingdesk.com/zh-Hans/",
-  "cpu": 0,
-  "mem": 0,
-  "disk": 10240,
-  "updateat": 1722308764,
-  "installed": false,
-  "reuse": true,
-  "depend": null,
-  "field": [
-    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
-    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
-    {"attr":"web_http_port","name":"服务端口","type":"number","default":7071,"suffix":"","unit":""},
-    {"attr":"ollama_base_url","name":"ollama地址","type":"text","default":"","suffix":"ollama服务的地址，一般为: http://x.x.x.x:11434","unit":""},
-    {"attr":"gpu","name":"开启GPU","type":"checkbox","default":false,"suffix":"为AingDesk开启GPU支持，9.5.0以上面板可用","unit":""}
-  ],
-  "env": [
-    {"key":"version","type":"string","default":null,"desc":"版本号"},
-    {"key":"web_http_port","type":"port","default":null,"desc":"服务端口"},
-    {"key":"ollama_base_url","type":"url","default":null,"desc":"ollama服务的地址"},
-    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
-    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
-  ],
-  "volumes": {}
-},
-{
   "appid": 226,
   "appname": "billionmail",
   "apptitle": "BillionMail",
@@ -312,6 +274,82 @@
     {"key":"memory_limit","type":"number","default":null,"desc":"内存限制"}
   ],
   "volumes": {"data": {"type": "path", "desc": "数据库目录"}}
+},
+{
+  "appid": 220,
+  "appname": "dify_v1100",
+  "apptitle": "Dify-v1.10.0",
+  "apptype": "AI",
+  "appTypeCN": "AI/大模型",
+  "appversion": [
+    {"m_version":"1","s_version":["10.1.fix"]}
+  ],
+  "appdesc": "Dify官方最新版，如无特殊需求请安装该版本(修复CEV-2025-55182)。Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
+  "appstatus": 1,
+  "icon": "",
+  "sort": 220,
+  "home": "",
+  "help": "https://docs.dify.ai/zh-hans/getting-started/install-self-hosted/bt-panel",
+  "cpu": 0,
+  "mem": 0,
+  "disk": 10240,
+  "updateat": 1765170032,
+  "installed": false,
+  "reuse": true,
+  "depend": null,
+  "field": [
+    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
+    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
+    {"attr":"web_http_port","name":"端口","type":"number","default":8088,"suffix":"","unit":""},
+    {"attr":"EXPOSE_PLUGIN_DEBUGGING_PORT","name":"插件端口","type":"number","default":5005,"suffix":"","unit":""}
+  ],
+  "env": [
+    {"key":"version","type":"string","default":null,"desc":"版本号"},
+    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
+    {"key":"EXPOSE_PLUGIN_DEBUGGING_PORT","type":"port","default":null,"desc":"插件端口"},
+    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
+    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
+  ],
+  "volumes": {"certbot": {"type": "path", "desc": "cert目录"}, "nginx": {"type": "path", "desc": "nginx目录"}, "pgvector": {"type": "path", "desc": "nginx目录"}, "ssrf_proxy": {"type": "path", "desc": "ssrf_proxy目录"}, "startupscripts": {"type": "path", "desc": ""}, "volumes": {"type": "path", "desc": ""}, "couchbase-server": {"type": "path", "desc": ""}, "elasticsearch": {"type": "path", "desc": ""}, "tidb": {"type": "path", "desc": ""}}
+},
+{
+  "appid": 76,
+  "appname": "n8n",
+  "apptitle": "n8n",
+  "apptype": "AI",
+  "appTypeCN": "AI/大模型",
+  "appversion": [
+    {"m_version":"latest","s_version":[]}
+  ],
+  "appdesc": "n8n 是一个开源的工作流自动化工具",
+  "appstatus": 1,
+  "icon": "",
+  "sort": 77,
+  "home": "",
+  "help": "",
+  "cpu": 0,
+  "mem": 0,
+  "disk": 10240,
+  "updateat": 1722308764,
+  "installed": false,
+  "reuse": true,
+  "depend": null,
+  "field": [
+    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
+    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
+    {"attr":"web_http_port","name":"端口","type":"number","default":5678,"suffix":"","unit":""},
+    {"attr":"cpus","name":"cpu核心数限制","type":"number","default":0,"suffix":"0为不限制,最大可用核心数为: ","unit":""},
+    {"attr":"memory_limit","name":"内存限制","type":"number","default":0,"suffix":"0为不限制,最大可用内存为: ","unit":""}
+  ],
+  "env": [
+    {"key":"version","type":"string","default":null,"desc":"版本号"},
+    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
+    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
+    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"},
+    {"key":"cpus","type":"number","default":null,"desc":"cpu核心数限制"},
+    {"key":"memory_limit","type":"number","default":null,"desc":"内存限制"}
+  ],
+  "volumes": {"data": {"type": "path", "desc": "数据目录"}}
 },
 {
   "appid": 14,
@@ -565,43 +603,6 @@
     {"key":"memory_limit","type":"number","default":null,"desc":"内存限制"}
   ],
   "volumes": {"data": {"type": "path", "desc": "数据库目录"}}
-},
-{
-  "appid": 223,
-  "appname": "dify_v190",
-  "apptitle": "Dify-v1.9.0",
-  "apptype": "AI",
-  "appTypeCN": "AI/大模型",
-  "appversion": [
-    {"m_version":"1","s_version":["9.0"]}
-  ],
-  "appdesc": "Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
-  "appstatus": 0,
-  "icon": "",
-  "sort": 220,
-  "home": "",
-  "help": "https://docs.dify.ai/zh-hans/getting-started/install-self-hosted/bt-panel",
-  "cpu": 0,
-  "mem": 0,
-  "disk": 10240,
-  "updateat": 1743057856,
-  "installed": false,
-  "reuse": true,
-  "depend": null,
-  "field": [
-    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
-    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
-    {"attr":"web_http_port","name":"端口","type":"number","default":8088,"suffix":"","unit":""},
-    {"attr":"EXPOSE_PLUGIN_DEBUGGING_PORT","name":"插件端口","type":"number","default":5005,"suffix":"","unit":""}
-  ],
-  "env": [
-    {"key":"version","type":"string","default":null,"desc":"版本号"},
-    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
-    {"key":"EXPOSE_PLUGIN_DEBUGGING_PORT","type":"port","default":null,"desc":"插件端口"},
-    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
-    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
-  ],
-  "volumes": {"certbot": {"type": "path", "desc": "cert目录"}, "nginx": {"type": "path", "desc": "nginx目录"}, "pgvector": {"type": "path", "desc": "nginx目录"}, "ssrf_proxy": {"type": "path", "desc": "ssrf_proxy目录"}, "startupscripts": {"type": "path", "desc": ""}, "volumes": {"type": "path", "desc": ""}, "couchbase-server": {"type": "path", "desc": ""}, "elasticsearch": {"type": "path", "desc": ""}, "tidb": {"type": "path", "desc": ""}}
 },
 {
   "appid": 232,
@@ -4111,45 +4112,6 @@
     {"key":"memory_limit","type":"number","default":null,"desc":"内存限制"}
   ],
   "volumes": {"config": {"type": "path", "desc": "配置目录"}}
-},
-{
-  "appid": 76,
-  "appname": "n8n",
-  "apptitle": "n8n",
-  "apptype": "AI",
-  "appTypeCN": "AI/大模型",
-  "appversion": [
-    {"m_version":"latest","s_version":[]}
-  ],
-  "appdesc": "n8n 是一个开源的工作流自动化工具",
-  "appstatus": 1,
-  "icon": "",
-  "sort": 77,
-  "home": "",
-  "help": "",
-  "cpu": 0,
-  "mem": 0,
-  "disk": 10240,
-  "updateat": 1722308764,
-  "installed": false,
-  "reuse": true,
-  "depend": null,
-  "field": [
-    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
-    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
-    {"attr":"web_http_port","name":"端口","type":"number","default":5678,"suffix":"","unit":""},
-    {"attr":"cpus","name":"cpu核心数限制","type":"number","default":0,"suffix":"0为不限制,最大可用核心数为: ","unit":""},
-    {"attr":"memory_limit","name":"内存限制","type":"number","default":0,"suffix":"0为不限制,最大可用内存为: ","unit":""}
-  ],
-  "env": [
-    {"key":"version","type":"string","default":null,"desc":"版本号"},
-    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
-    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
-    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"},
-    {"key":"cpus","type":"number","default":null,"desc":"cpu核心数限制"},
-    {"key":"memory_limit","type":"number","default":null,"desc":"内存限制"}
-  ],
-  "volumes": {"data": {"type": "path", "desc": "数据目录"}}
 },
 {
   "appid": 195,
@@ -8153,43 +8115,6 @@
   "volumes": {}
 },
 {
-  "appid": 161,
-  "appname": "dify",
-  "apptitle": "Dify",
-  "apptype": "AI",
-  "appTypeCN": "AI/大模型",
-  "appversion": [
-    {"m_version":"1","s_version":["7.0","6.0"]}
-  ],
-  "appdesc": "Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
-  "appstatus": 0,
-  "icon": "",
-  "sort": 162,
-  "home": "",
-  "help": "https://docs.dify.ai/zh-hans/getting-started/install-self-hosted/bt-panel",
-  "cpu": 0,
-  "mem": 0,
-  "disk": 10240,
-  "updateat": 1722308764,
-  "installed": false,
-  "reuse": true,
-  "depend": null,
-  "field": [
-    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
-    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
-    {"attr":"web_http_port","name":"端口","type":"number","default":8088,"suffix":"","unit":""},
-    {"attr":"EXPOSE_PLUGIN_DEBUGGING_PORT","name":"插件端口","type":"number","default":5005,"suffix":"","unit":""}
-  ],
-  "env": [
-    {"key":"version","type":"string","default":null,"desc":"版本号"},
-    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
-    {"key":"EXPOSE_PLUGIN_DEBUGGING_PORT","type":"port","default":null,"desc":"插件端口"},
-    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
-    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
-  ],
-  "volumes": {"certbot": {"type": "path", "desc": "cert目录"}, "nginx": {"type": "path", "desc": "nginx目录"}, "pgvector": {"type": "path", "desc": "nginx目录"}, "ssrf_proxy": {"type": "path", "desc": "ssrf_proxy目录"}, "startupscripts": {"type": "path", "desc": ""}, "volumes": {"type": "path", "desc": ""}, "couchbase-server": {"type": "path", "desc": ""}, "elasticsearch": {"type": "path", "desc": ""}, "tidb": {"type": "path", "desc": ""}}
-},
-{
   "appid": 162,
   "appname": "vocechat",
   "apptitle": "VoceChat",
@@ -9816,43 +9741,6 @@
   "volumes": {"data": {"type": "path", "desc": "数据目录"}}
 },
 {
-  "appid": 220,
-  "appname": "dify_v1100",
-  "apptitle": "Dify-v1.10.0",
-  "apptype": "AI",
-  "appTypeCN": "AI/大模型",
-  "appversion": [
-    {"m_version":"1","s_version":["10.1.fix"]}
-  ],
-  "appdesc": "Dify官方最新版，如无特殊需求请安装该版本(修复CEV-2025-55182)。Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
-  "appstatus": 1,
-  "icon": "",
-  "sort": 220,
-  "home": "",
-  "help": "https://docs.dify.ai/zh-hans/getting-started/install-self-hosted/bt-panel",
-  "cpu": 0,
-  "mem": 0,
-  "disk": 10240,
-  "updateat": 1765170032,
-  "installed": false,
-  "reuse": true,
-  "depend": null,
-  "field": [
-    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
-    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
-    {"attr":"web_http_port","name":"端口","type":"number","default":8088,"suffix":"","unit":""},
-    {"attr":"EXPOSE_PLUGIN_DEBUGGING_PORT","name":"插件端口","type":"number","default":5005,"suffix":"","unit":""}
-  ],
-  "env": [
-    {"key":"version","type":"string","default":null,"desc":"版本号"},
-    {"key":"web_http_port","type":"port","default":null,"desc":"端口"},
-    {"key":"EXPOSE_PLUGIN_DEBUGGING_PORT","type":"port","default":null,"desc":"插件端口"},
-    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
-    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
-  ],
-  "volumes": {"certbot": {"type": "path", "desc": "cert目录"}, "nginx": {"type": "path", "desc": "nginx目录"}, "pgvector": {"type": "path", "desc": "nginx目录"}, "ssrf_proxy": {"type": "path", "desc": "ssrf_proxy目录"}, "startupscripts": {"type": "path", "desc": ""}, "volumes": {"type": "path", "desc": ""}, "couchbase-server": {"type": "path", "desc": ""}, "elasticsearch": {"type": "path", "desc": ""}, "tidb": {"type": "path", "desc": ""}}
-},
-{
   "appid": 221,
   "appname": "ujcms",
   "apptitle": "UJCMS",
@@ -10011,6 +9899,44 @@
     {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
   ],
   "volumes": {"data": {"type": "path", "desc": "数据目录"}}
+},
+{
+  "appid": 214,
+  "appname": "aingdesk",
+  "apptitle": "AingDesk",
+  "apptype": "AI",
+  "appTypeCN": "AI/大模型",
+  "appversion": [
+    {"m_version":"latest","s_version":[]}
+  ],
+  "appdesc": "AingDesk是一款开源免费，简单好用的AI助手，支持知识库、模型API、分享、联网搜索、智能体。",
+  "appstatus": 1,
+  "icon": "",
+  "sort": 215,
+  "home": "https://www.aingdesk.com/zh/",
+  "help": "https://docs.aingdesk.com/zh-Hans/",
+  "cpu": 0,
+  "mem": 0,
+  "disk": 10240,
+  "updateat": 1722308764,
+  "installed": false,
+  "reuse": true,
+  "depend": null,
+  "field": [
+    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
+    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问，如果您设置了域名请不要勾选这里","unit":""},
+    {"attr":"web_http_port","name":"服务端口","type":"number","default":7071,"suffix":"","unit":""},
+    {"attr":"ollama_base_url","name":"ollama地址","type":"text","default":"","suffix":"ollama服务的地址，一般为: http://x.x.x.x:11434","unit":""},
+    {"attr":"gpu","name":"开启GPU","type":"checkbox","default":false,"suffix":"为AingDesk开启GPU支持，9.5.0以上面板可用","unit":""}
+  ],
+  "env": [
+    {"key":"version","type":"string","default":null,"desc":"版本号"},
+    {"key":"web_http_port","type":"port","default":null,"desc":"服务端口"},
+    {"key":"ollama_base_url","type":"url","default":null,"desc":"ollama服务的地址"},
+    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
+    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"}
+  ],
+  "volumes": {}
 },
 {
   "appid": 225,
@@ -12614,5 +12540,48 @@
     {"key":"memory_limit","type":"number","default":null,"desc":"内存大小限制"}
   ],
   "volumes": {"data": {"type": "path", "desc": "应用数据目录"}}
+},
+{
+  "appid": 291,
+  "appname": "chromium",
+  "apptitle": "Chromium浏览器",
+  "apptype": "Tools",
+  "appTypeCN": "实用工具",
+  "appversion": [
+    {"m_version":"latest","s_version":[]}
+  ],
+  "appdesc": "Chromium 是一个开源浏览器项目，旨在为所有用户构建更安全、更快、更稳定的网页体验方式。",
+  "appstatus": 1,
+  "icon": "",
+  "sort": 22,
+  "home": "https://github.com/linuxserver/docker-chromium",
+  "help": "https://github.com/linuxserver/docker-chromium",
+  "cpu": 0,
+  "mem": 0,
+  "disk": 10240,
+  "updateat": 1766126326,
+  "installed": false,
+  "reuse": true,
+  "depend": null,
+  "field": [
+    {"attr":"domain","name":"域名","type":"textarea","default":"","suffix":"浏览器访问的域名,非必填","unit":""},
+    {"attr":"allow_access","name":"允许外部访问","type":"checkbox","default":true,"suffix":"允许直接通过主机IP+端口访问","unit":""},
+    {"attr":"chromium_https_port","name":"HTTPS端口","type":"number","default":8001,"suffix":"Chromium浏览器HTTPS访问端口","unit":""},
+    {"attr":"username","name":"用户名","type":"text","default":"btchrome","suffix":"登录用户名","unit":""},
+    {"attr":"password","name":"密码","type":"password","default":"","suffix":"登录密码","unit":""},
+    {"attr":"cpus","name":"cpu核心数限制","type":"number","default":1,"suffix":"0为不限制,最大可用核心数为: ","unit":""},
+    {"attr":"memory_limit","name":"内存限制(MB)","type":"number","default":"1024","suffix":"0为不限制,最大可用内存为: ","unit":""}
+  ],
+  "env": [
+    {"key":"version","type":"string","default":null,"desc":"版本号"},
+    {"key":"chromium_https_port","type":"port","default":8001,"desc":"HTTPS端口"},
+    {"key":"app_path","type":"path","default":null,"desc":"应用数据目录"},
+    {"key":"host_ip","type":"string","default":null,"desc":"主机IP"},
+    {"key":"cpus","type":"number","default":null,"desc":"CPU核心数限制"},
+    {"key":"memory_limit","type":"number","default":null,"desc":"内存大小限制"},
+    {"key":"password","type":"string","default":null,"desc":"登录密码"},
+    {"key":"username","type":"string","default":"btchrome","desc":"登录用户名"}
+  ],
+  "volumes": {"config": {"type": "path", "desc": "配置文件目录"}}
 }
 ]
