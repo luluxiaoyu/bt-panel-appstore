@@ -1,0 +1,7 @@
+endpoints:
+  - name: production-api
+    url: "https://www.baidu.com"
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
