@@ -1,14 +1,14 @@
 {
-    "appid": 220,
-    "appname": "dify_v1100",
-    "apptitle": "Dify-v1.10.0",
+    "appid": 296,
+    "appname": "dify_v1110",
+    "apptitle": "Dify-v1.11.0",
     "apptype": "AI",
     "appTypeCN": "AI/大模型",
     "appversion": [
-        {"m_version":"1","s_version":["10.1.fix"]}
+        {"m_version":"1","s_version":["11.2"]}
     ],
-    "appdesc": "Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
-    "appstatus": 0,
+    "appdesc": "Dify官方最新版，如无特殊需求请安装该版本，Dify 是一个开源的 LLM 应用开发平台。其直观的界面结合了 AI 工作流、RAG 管道、Agent、模型管理、可观测性功能等，让您可以快速从原型到生产。",
+    "appstatus": 1,
     "icon": "",
     "sort": 220,
     "home": "",
@@ -16,7 +16,7 @@
     "cpu": 0,
     "mem": 0,
     "disk": 10240,
-    "updateat": 1765170032,
+    "updateat": 1767670577,
     "installed": false,
     "reuse": true,
     "depend": null,
