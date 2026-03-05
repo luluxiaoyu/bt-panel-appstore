@@ -5,7 +5,7 @@
     "apptype": "Tools",
     "appTypeCN": "实用工具",
     "appversion": [
-        {"m_version":"2","s_version":["18","17","16","15"]}
+        {"m_version":"2","s_version":["20.2","18","17","16","15"]}
     ],
     "appdesc": "支持Python3、JavaScript、Shell、Typescript 的定时任务管理平台",
     "appstatus": 1,
