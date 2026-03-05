@@ -1,6 +1,6 @@
 services:
   BT_SERVICE_NAME6:
-    image: whyour/qinglong:${VERSION}.0
+    image: whyour/qinglong:${VERSION}
     deploy:
       resources:
         limits:
