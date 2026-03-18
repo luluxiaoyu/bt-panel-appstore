@@ -111,7 +111,7 @@
     {
       "key": "version",
       "type": "string",
-      "default": "1.6.15",
+      "default": "v1.6.15",
       "desc": "镜像版本号"
     },
     {
