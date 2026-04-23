@@ -1,0 +1,46 @@
+services:
+  mysql:
+    image: xnx3/bizbot-mysql-auto:8.0
+    container_name: bizbot-mysql
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ${APP_PATH}/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "bizexplore", "-p55SpfeTzFKfy6aXa"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    labels:
+      createdBy: "bt_apps"
+
+  bizbot:
+    image: xnx3/bizbot:latest
+    container_name: bizbot
+    network_mode: host
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DISPLAY=:99
+      - JAVA_OPTS=-Xms512m -Xmx${JVM_MEMORY}m -XX:+UseG1GC
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/machine-id:/etc/machine-id
+      - /var/lib/dbus/machine-id:/var/lib/dbus/machine-id
+      - ${APP_PATH}/license:/mnt/bizbot/license
+      - ${APP_PATH}/config:/mnt/bizbot/config
+      - ${APP_PATH}/logs:/mnt/bizbot/logs
+      - ${APP_PATH}/config/config.properties:/opt/bizexplore/config.properties
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8089/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    labels:
+      createdBy: "bt_apps"
